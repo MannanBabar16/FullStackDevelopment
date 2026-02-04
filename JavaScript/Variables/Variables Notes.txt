@@ -1,0 +1,238 @@
+1️⃣ JavaScript Variables, Data Types & Objects
+--------------------------------------------------------------------------------------------------
+
+
+1. Variables in JavaScript
+
+A variable is a named reference to a value stored in memory.
+
+JavaScript does not store values in variables.
+It stores references to values.
+
+This distinction will matter later (especially with objects).
+
+--------------------------------------------------------------------------------------------------
+
+var (Legacy – understand, don’t use)
+
+Characteristics:
+Function-scoped (NOT block-scoped)
+Hoisted (initialized as undefined)
+Can be redeclared
+Can be reassigned
+
+var a = 10;
+var a = 20; // allowed (dangerous)
+
+Hoisting behavior
+console.log(x); // undefined
+var x = 5;
+
+What actually happens:
+var x;
+console.log(x);
+x = 5;
+
+Why var is bad
+
+Causes accidental overwrites
+Breaks block logic
+Makes debugging harder
+
+✅ Rule:
+You should know var for legacy code and interviews.
+❌ You should not use it in modern code.
+
+--------------------------------------------------------------------------------------------------
+
+let (Modern, default choice)
+
+Characteristics:
+Block-scoped
+Hoisted but in Temporal Dead Zone (TDZ)
+Cannot be redeclared
+Can be reassigned
+
+let x = 10;
+x = 20; // allowed
+
+
+Block scope:
+{
+  let a = 5;
+}
+console.log(a); // ReferenceError
+
+
+Temporal Dead Zone
+console.log(b); // ReferenceError
+let b = 10;
+
+TDZ exists to prevent using variables before they’re logically initialized.
+
+--------------------------------------------------------------------------------------------------
+
+2️⃣ JavaScript Data Types
+
+JavaScript has 8 data types:
+
+🔹 Primitive Types (7)
+
+Primitives are:
+Immutable
+Stored by value
+Compared by value
+
+🔹 Non-Primitive (1)
+
+Object
+Mutable
+Stored by reference
+
+--------------------------------------------------------------------------------------------------
+
+Primitive Data Types (Deep Understanding)
+
+1. null
+Represents intentional absence of value
+
+Type bug in JS:
+typeof null // "object" ❌ (historical bug)
+null is not an object.
+
+--------------------------------------------------------------------------------------------------
+
+2. undefined
+Variable declared but not assigned
+Function with no return returns undefined
+
+let x;
+console.log(x); // undefined
+
+null vs undefined
+
+| null             | undefined  |
+| ---------------- | ---------- |
+| Intentional      | Accidental |
+| Set by developer | Set by JS  |
+| Known empty      | Unknown    |
+
+
+--------------------------------------------------------------------------------------------------
+
+3. Number
+
+Includes integers & floating points
+IEEE 754 double precision
+
+0.1 + 0.2 // 0.30000000000000004
+⚠️ Floating-point precision issues are real.
+
+--------------------------------------------------------------------------------------------------
+
+4. String
+
+Immutable sequence of characters
+Stored as UTF-16
+
+let str = "hello";
+str[0] = "H";
+console.log(str); // "hello"
+
+Strings cannot be mutated.
+
+--------------------------------------------------------------------------------------------------
+
+5. Boolean
+true, false
+
+Falsy values (VERY IMPORTANT):
+false
+0
+-0
+0n
+""
+null
+undefined
+NaN
+
+Everything else is truthy.
+
+--------------------------------------------------------------------------------------------------
+
+6. Symbol
+Creates unique identifiers
+
+Used for:
+Avoiding property name collisions
+Internal object behavior
+
+const id = Symbol("id");
+
+Two symbols are never equal:
+Symbol("a") === Symbol("a") // false
+
+--------------------------------------------------------------------------------------------------
+
+7. BigInt
+For integers larger than Number.MAX_SAFE_INTEGER
+
+let big = 12345678901234567890n;
+
+Cannot mix with Number:
+10n + 5 // ❌ Error
+
+--------------------------------------------------------------------------------------------------
+
+🔍 Key Primitive Rule
+
+let a = 10;
+let b = a;
+b = 20;
+
+console.log(a); // 10
+
+Why?
+Because primitives are copied by value.
+
+--------------------------------------------------------------------------------------------------
+
+3️⃣ Objects (Non-Primitive)
+Objects are collections of key-value pairs.
+
+let user = {
+  name: "Alex",
+  age: 25
+};
+
+Object Characteristics:
+Stored by reference
+Mutable
+Keys are strings or symbols
+
+Reference behavior (CRITICAL):
+let obj1 = { a: 1 };
+let obj2 = obj1;
+
+obj2.a = 100;
+console.log(obj1.a); // 100
+
+Both variables point to the same memory location.
+
+This single concept will:
+Save you from bugs
+Help you understand React, state, Redux, backend payloads
+
+Comparing objects:
+{} === {} // false
+
+Why?
+Different memory references
+
+--------------------------------------------------------------------------------------------------
+
+Primitives are immutable in JavaScript because they are stored and accessed by value, and any operation that seems to modify them actually creates a new value in memory.
+Objects are mutable because variables hold references to them, and their internal properties can be changed without changing the reference.
+
+const prevents reassignment of the variable, not mutation of the object it references.
+Arrays and objects are mutable, so their contents can change as long as the reference stays the same.
