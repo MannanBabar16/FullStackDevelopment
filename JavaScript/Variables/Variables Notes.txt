@@ -236,3 +236,5 @@ Objects are mutable because variables hold references to them, and their interna
 
 const prevents reassignment of the variable, not mutation of the object it references.
 Arrays and objects are mutable, so their contents can change as long as the reference stays the same.
+
+

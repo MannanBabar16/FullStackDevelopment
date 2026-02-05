@@ -1,0 +1,200 @@
+2️⃣ JavaScript Expressions & Conditionals
+--------------------------------------------------------------------------------------------------
+
+JavaScript Expressions
+
+What is an Expression?
+An expression is anything that produces a value.
+
+Examples:
+5 + 3          // 8
+x > 10         // true or false
+a = 10         // 10
+true && false  // false
+
+if (x = 5) {}   // VALID (but dangerous)
+if (x == 5) {}  // comparison
+
+Assignments are expressions too.
+This is a classic bug source.
+
+--------------------------------------------------------------------------------------------------
+
+Conditionals (if, else if, else)
+Basic structure
+
+if (condition) {
+  // runs if condition is truthy
+} else if (anotherCondition) {
+  // runs if above was false
+} else {
+  // runs if all conditions are false
+}
+
+Key rule
+Conditions are evaluated using truthy / falsy, not just true or false.
+
+Falsy values recap:
+false, 0, -0, 0n, "", null, undefined, NaN
+Everything else is truthy.
+
+else if ladder behavior
+Evaluated top to bottom
+Stops at the first true condition
+Remaining blocks are ignored
+Order matters.
+
+--------------------------------------------------------------------------------------------------
+
+Arithmetic Operators
+
+| Operator | Meaning                         |
+| -------- | ------------------------------- |
+| `+`      | Addition / String concatenation |
+| `-`      | Subtraction                     |
+| `*`      | Multiplication                  |
+| `/`      | Division                        |
+| `%`      | Remainder                       |
+| `**`     | Exponentiation                  |
+| `++`     | Increment                       |
+| `--`     | Decrement                       |
+
++ is special (VERY IMPORTANT)
+1 + 2       // 3
+"1" + 2     // "12"
+1 + "2"     // "12"
+
+If either operand is a string, + becomes concatenation.
+
+Increment / Decrement (++, --)
+
+let x = 5;
+x++; // post-increment
+++x; // pre-increment
+
+Difference:
+x++ → returns old value, then increments
+++x → increments first, then returns
+
+This matters in expressions.
+
+--------------------------------------------------------------------------------------------------
+
+Assignment Operators
+Assignment operators modify and reassign values.
+
+| Operator | Meaning               |
+| -------- | --------------------- |
+| `=`      | Assign                |
+| `+=`     | Add & assign          |
+| `-=`     | Subtract & assign     |
+| `*=`     | Multiply & assign     |
+| `/=`     | Divide & assign       |
+| `%=`     | Modulo & assign       |
+| `**=`    | Exponentiate & assign |
+
+
+let x = 10;
+x += 5; // x = x + 5
+
+
+--------------------------------------------------------------------------------------------------
+
+Comparison Operators
+Comparison operators return boolean values.
+
+Loose vs Strict (CRITICAL)
+
+| Operator | Meaning           |
+| -------- | ----------------- |
+| `==`     | Loose equality    |
+| `!=`     | Loose inequality  |
+| `===`    | Strict equality   |
+| `!==`    | Strict inequality |
+
+
+== (Loose equality)
+
+Performs type coercion
+Can cause bugs
+
+"5" == 5     // true
+null == undefined // true
+
+
+=== (Strict equality)
+
+No type conversion
+Checks value + type
+
+"5" === 5    // false
+
+✅ Rule:
+Use === and !== always, unless you explicitly want coercion (rare).
+
+--------------------------------------------------------------------------------------------------
+
+Relational operators
+> , < , >= , <=
+
+Work on:
+Numbers
+Strings (lexicographically)
+Type coercion may occur
+
+--------------------------------------------------------------------------------------------------
+
+Ternary Operator (? :)
+
+
+condition ? valueIfTrue : valueIfFalse;
+
+let result = age >= 18 ? "Adult" : "Minor";
+
+Rules:
+Returns a value
+Best for simple decisions
+Avoid nesting (hurts readability)
+
+--------------------------------------------------------------------------------------------------
+
+Logical Operators
+| Operator | Meaning |   |    |
+| -------- | ------- | - | -- |
+| `&&`     | AND     |   |    |
+| `        |         | ` | OR |
+| `!`      | NOT     |   |    |
+
+
+Logical operators return VALUES, not booleans (IMPORTANT)
+
+"hello" && 0     // 0
+null || "JS"     // "JS"
+
+Rules:
+&& returns first falsy or last truthy
+|| returns first truthy or last falsy
+
+This is used heavily in:
+Default values
+Short-circuiting
+React JSX
+
+NOT operator (!)
+!true  // false
+!0     // true
+
+!!value // converts to boolean
+
+--------------------------------------------------------------------------------------------------
+
+Operator Precedence (Know this exists)
+
+true || false && false // true
+
+Because:
+&& has higher precedence than ||
+
+Use parentheses to avoid confusion:
+(true || false) && false
+
