@@ -41,7 +41,9 @@ This repository documents my full-stack development learning process, including 
 
 ---
 
-### Practice Phase 1
+### 5. Practice 1 
+##### Phase 1
+
 -> Even or Odd Checker
 
 -> Positive, Negative, Zero Checker
