@@ -1,0 +1,129 @@
+JavaScript Loops
+
+A loop is a control structure that:
+Repeats a block of code
+Until a condition becomes false
+Or until iteration completes
+
+Every loop has:
+Initialization
+Condition
+Update
+Body
+
+Missing any of these can cause infinite loops.
+
+--------------------------------------------------------------------------------------------------
+
+for Loop
+
+for (initialization; condition; update) {
+  // code
+}
+
+for (let i = 0; i < 5; i++) {
+  console.log(i);
+}
+
+Key characteristics:
+Best for known number of iterations
+Loop variable is block-scoped with let
+Very readable for counters
+
+
+--------------------------------------------------------------------------------------------------
+
+while Loop
+
+while (condition) {
+  // code
+}
+
+Behavior
+Condition is checked before each iteration
+Body may execute zero times
+
+Use case
+When number of iterations is unknown
+Loop depends on a changing condition
+
+
+--------------------------------------------------------------------------------------------------
+
+
+do...while Loop
+
+do {
+  // code
+} while (condition);
+
+
+Behavior
+Executes at least once
+Condition checked after execution
+
+Use case
+When code must run once no matter what
+Input validation, retries
+
+
+--------------------------------------------------------------------------------------------------
+
+
+for...in Loop
+Purpose
+Iterates over enumerable property keys.
+
+for (let key in object) {
+  // object[key]
+}
+
+const user = { name: "Alex", age: 25 };
+
+for (let key in user) {
+  console.log(key, user[key]);
+}
+
+Important rules
+Iterates over keys, not values
+Order is not guaranteed
+Includes inherited enumerable properties
+
+⚠️ Do NOT use for arrays (unless you know exactly why).
+
+
+--------------------------------------------------------------------------------------------------
+
+
+
+for...of Loop
+Purpose
+
+Iterates over values of iterable objects.
+
+for (let value of iterable) {
+  // value
+}
+
+
+for (let char of "JS") {
+  console.log(char);
+}
+
+Works with:
+Arrays
+Strings
+Maps
+Sets
+NodeLists
+
+Key difference (for...in vs for...of)
+| `for...in`         | `for...of`          |
+| ------------------ | ------------------- |
+| Keys               | Values              |
+| Objects            | Iterables           |
+| Includes inherited | Own iterable values |
+| Risky for arrays   | Best for arrays     |
+
+
+--------------------------------------------------------------------------------------------------
