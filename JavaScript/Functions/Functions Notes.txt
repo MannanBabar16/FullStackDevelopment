@@ -1,0 +1,145 @@
+JavaScript Functions
+
+A function is a reusable block of code that:
+Performs a specific task
+Can accept input (parameters)
+Can return output (value)
+
+Think of a function as:
+A machine that transforms input into output
+
+--------------------------------------------------------------------------------------------------
+
+
+Function Declaration
+
+function greet(name) {
+  return "Hello " + name;
+}
+
+Characteristics
+Hoisted (can be called before definition)
+Has its own scope
+Preferred for core logic
+
+sayHi();
+
+function sayHi() {
+  console.log("Hi");
+}
+
+Works because of hoisting.
+
+
+--------------------------------------------------------------------------------------------------
+
+
+Function Expression
+
+const greet = function(name) {
+  return "Hello " + name;
+};
+
+
+NOT hoisted like declarations
+Stored in a variable
+Useful for dynamic behavior
+
+Important distinction
+greet(); // ❌ Error
+
+const greet = function() {};
+
+The variable exists, but the function is not initialized yet.
+
+--------------------------------------------------------------------------------------------------
+
+Parameters vs Arguments
+
+Parameters → placeholders in function definition
+Arguments → actual values passed during call
+
+function add(a, b) { // parameters
+  return a + b;
+}
+
+add(2, 3); // arguments
+
+
+--------------------------------------------------------------------------------------------------
+
+Return Statement
+Purpose
+Sends a value back to the caller
+Ends function execution
+
+function sum(a, b) {
+  return a + b;
+  console.log("never runs");
+}
+
+
+Default return
+If no return statement:
+
+function test() {}
+test(); // undefined
+
+
+--------------------------------------------------------------------------------------------------
+
+
+Arrow Functions
+const add = (a, b) => a + b;
+
+
+Multi-line version
+const add = (a, b) => {
+  return a + b;
+};
+
+
+Key differences from regular functions
+Shorter syntax
+No own this
+Cannot be used as constructors
+No arguments object
+
+
+--------------------------------------------------------------------------------------------------
+
+Default Parameters
+function greet(name = "Guest") {
+  return "Hello " + name;
+}
+
+
+--------------------------------------------------------------------------------------------------
+
+Function Calling & Execution
+
+function square(x) {
+  return x * x;
+}
+
+let result = square(4);
+
+
+--------------------------------------------------------------------------------------------------
+
+Functions are Values (VERY IMPORTANT)
+Functions in JavaScript are first-class citizens.
+
+They can be:
+Assigned to variables
+Passed as arguments
+Returned from other functions
+
+function greet() {}
+let sayHi = greet;
+
+This concept powers:
+Callbacks
+Event handlers
+Async programming
+
