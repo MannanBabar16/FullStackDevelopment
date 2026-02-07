@@ -52,8 +52,21 @@ This repository documents my full-stack development learning process, including 
 
 -> Largest of 3 numbers
 
----
+--
 
+##### Phase 2
+
+-> Print Numbers from 1 to N
+
+-> Sum of First N Natural Numbers
+
+-> Multiplication Table
+
+-> Factorial of a Number
+
+-> Count Digits in a Number
+
+---
 
 
 
